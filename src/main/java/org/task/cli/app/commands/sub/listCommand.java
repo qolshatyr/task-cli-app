@@ -9,8 +9,8 @@ import java.util.concurrent.Callable;
 
 
 @CommandLine.Command(name = "list", mixinStandardHelpOptions = true, requiredOptionMarker = '*',
-        description = "This is a subcommand for listing all tasks.", header = "List SubCommand",
-        optionListHeading = "%nOptions are:%n",
+        description = "This is a subcommand for listing all tasks.", header = "To list all tasks.",
+        commandListHeading = "%nSubCommand for list are:%n",
         subcommands = {listDoneCommand.class, listToDoCommand.class, listInProgressCommand.class})
 public class listCommand implements Callable<Integer> {
 

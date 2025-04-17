@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
         optionListHeading = "%nOptions are:%n", footerHeading = "%nCopyright.", footer = "%nDeveloped by Zhamash Asylzhan.",
         commandListHeading = "%nCommands are:%n",
         subcommands = {
-            addCommand.class, updateCommand.class, deleteCommand.class, markToDoCommand.class,
+            addCommand.class, deleteCommand.class, updateCommand.class, markToDoCommand.class,
                 markInProgressCommand.class, markDoneCommand.class, listCommand.class
 })
 public class taskCliCommand implements Callable<Integer> {
@@ -19,7 +19,7 @@ public class taskCliCommand implements Callable<Integer> {
     final Integer FAILURE = 1;
 
     public static void main(String[] args) {
-        int exitStatus = new CommandLine(new taskCliCommand()).execute("--help");
+        int exitStatus = new CommandLine(new taskCliCommand()).execute("list");
         System.exit(exitStatus);
     }
 

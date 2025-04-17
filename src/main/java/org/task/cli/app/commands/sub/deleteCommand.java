@@ -5,12 +5,12 @@ import picocli.CommandLine;
 import java.util.concurrent.Callable;
 
 
-@CommandLine.Command(name = "add", mixinStandardHelpOptions = true, requiredOptionMarker = '*',
-        description = "This is a subcommand for adding new tasks.", header = "Add SubCommand",
-        optionListHeading = "%nOptions are:%n")
+@CommandLine.Command(name = "delete", mixinStandardHelpOptions = true, requiredOptionMarker = '*',
+        description = "This is a subcommand for deleting tasks.", header = "To delete task.")
 public class deleteCommand implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
+        System.out.println("[task-cli] Deleting task.");
         return 0;
     }
 }

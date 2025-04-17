@@ -6,8 +6,7 @@ import java.util.concurrent.Callable;
 
 
 @CommandLine.Command(name = "add", mixinStandardHelpOptions = true, requiredOptionMarker = '*',
-        description = "This is a subcommand for adding new tasks.", header = "Add SubCommand",
-        optionListHeading = "%nOptions are:%n")
+        description = "This is a subcommand for adding new tasks.", header = "To add new task.")
 public class addCommand implements Callable<Integer> {
 
     @Override
