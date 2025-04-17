@@ -6,7 +6,7 @@ import java.util.concurrent.Callable;
 
 
 @CommandLine.Command(name = "mark-done", mixinStandardHelpOptions = true, requiredOptionMarker = '*',
-        description = "This is a subcommand for adding new tasks.", header = "To mark status done some task.",
+        description = "This is a subcommand for marking tasks that done.", header = "To mark status done some task.",
         optionListHeading = "%nOptions are:%n")
 public class markDoneCommand implements Callable<Integer> {
     @Override

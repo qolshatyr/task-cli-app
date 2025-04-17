@@ -11,8 +11,8 @@ import java.util.concurrent.Callable;
         optionListHeading = "%nOptions are:%n", footerHeading = "%nCopyright.", footer = "%nDeveloped by Zhamash Asylzhan.",
         commandListHeading = "%nCommands are:%n",
         subcommands = {
-            addCommand.class, deleteCommand.class, updateCommand.class, markToDoCommand.class,
-                markInProgressCommand.class, markDoneCommand.class, listCommand.class
+            addCommand.class, deleteCommand.class, updateCommand.class, markInProgressCommand.class,
+                markDoneCommand.class, listCommand.class
 })
 public class taskCliCommand implements Callable<Integer> {
     final Integer SUCCESS = 0;
