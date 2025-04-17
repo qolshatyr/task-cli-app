@@ -1,19 +1,18 @@
 package org.task.cli.app.model;
 
-import java.util.Date;
 
 public class Task {
     private int id;
     private String description;
     private String status;
-    private Date createdAt;
-    private Date updatedAt;
+    private String createdAt;
+    private String updatedAt;
 
     public Task() {
 
     }
 
-    public Task(int id, String description, String status, Date createdAt, Date updatedAt) {
+    public Task(int id, String description, String status, String createdAt, String updatedAt) {
         this.id = id;
         this.description = description;
         this.status = status;
@@ -30,9 +29,9 @@ public class Task {
     public String getStatus() {return status;}
     public void setStatus(String status) {this.status = status;}
 
-    public Date getCreatedAt() {return createdAt;}
-    public void setCreatedAt(Date createdAt) {this.createdAt = createdAt;}
+    public String getCreatedAt() {return createdAt;}
+    public void setCreatedAt(String createdAt) {this.createdAt = createdAt;}
 
-    public Date getUpdatedAt() {return updatedAt;}
-    public void setUpdatedAt(Date updatedAt) {this.updatedAt = updatedAt;}
+    public String getUpdatedAt() {return updatedAt;}
+    public void setUpdatedAt(String updatedAt) {this.updatedAt = updatedAt;}
 }

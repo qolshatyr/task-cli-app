@@ -19,7 +19,7 @@ public class taskCliCommand implements Callable<Integer> {
     final Integer FAILURE = 1;
 
     public static void main(String[] args) {
-        int exitStatus = new CommandLine(new taskCliCommand()).execute("list");
+        int exitStatus = new CommandLine(new taskCliCommand()).execute("add", "Do this");
         System.exit(exitStatus);
     }
 
