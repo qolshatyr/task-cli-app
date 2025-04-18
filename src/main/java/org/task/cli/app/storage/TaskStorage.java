@@ -14,12 +14,19 @@ import java.util.List;
 public class TaskStorage {
     private static final String FILE_PATH = "tasks.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Type TASK_LIST_TYPE = new TypeToken<List<Task>>(){}.getType();
+
 
     public void isFileExist() throws IOException {
         File file = new File(FILE_PATH);
         if (!file.exists()) {
-            file.createNewFile();
-            Writer writer = new FileWriter(file);
+            initializeFile(file);
+        }
+    }
+
+    public void initializeFile(File file) throws IOException {
+        file.createNewFile();
+        try (Writer writer = new FileWriter(file)) {
             writer.write("[]");
         }
     }
@@ -27,29 +34,26 @@ public class TaskStorage {
     public List<Task> loadFile() {
         try {
             isFileExist();
-            Reader reader = new FileReader(FILE_PATH);
-            Type taskListType = new TypeToken<List<Task>>(){}.getType();
-            List<Task> tasks = gson.fromJson(reader, taskListType);
-            return tasks != null ? tasks : new ArrayList<Task>();
+            try (Reader reader = new FileReader(FILE_PATH)) {
+                List<Task> tasks = gson.fromJson(reader, TASK_LIST_TYPE);
+                return tasks != null ? tasks : new ArrayList<>();
+            }
         }
         catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            return new ArrayList<Task>();
+            return new ArrayList<>();
         }
     }
 
     public void saveFile(List<Task> tasks) {
         try {
             isFileExist();
-            Writer writer = new FileWriter(FILE_PATH);
-            gson.toJson(tasks, writer);
-
-            System.out.println("Saved tasks to file: " + FILE_PATH);
-            writer.close();
+            try (Writer writer = new FileWriter(FILE_PATH)) {
+                gson.toJson(tasks, writer);
+            }
         }
         catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
 }

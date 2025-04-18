@@ -1,6 +1,7 @@
 package org.task.cli.app.commands;
 
 import org.task.cli.app.commands.sub.*;
+import org.task.cli.app.service.TaskService;
 import picocli.CommandLine;
 
 import java.util.concurrent.Callable;
@@ -11,15 +12,19 @@ import java.util.concurrent.Callable;
         optionListHeading = "%nOptions are:%n", footerHeading = "%nCopyright.", footer = "%nDeveloped by Zhamash Asylzhan.",
         commandListHeading = "%nCommands are:%n",
         subcommands = {
-            addCommand.class, deleteCommand.class, updateCommand.class, markInProgressCommand.class,
-                markDoneCommand.class, listCommand.class
-})
-public class taskCliCommand implements Callable<Integer> {
+            AddCommand.class, DeleteCommand.class, UpdateCommand.class, MarkInProgressCommand.class,
+                MarkDoneCommand.class, ListCommand.class, ListDoneCommand.class, ListToDoCommand.class,
+                ListInProgressCommand.class})
+public class TaskCliCommand implements Callable<Integer> {
+    private final TaskService taskService = new TaskService();
     final Integer SUCCESS = 0;
-    final Integer FAILURE = 1;
+
+    public TaskService getTaskService() {
+        return taskService;
+    }
 
     public static void main(String[] args) {
-        int exitStatus = new CommandLine(new taskCliCommand()).execute("add", "Do this");
+        int exitStatus = new CommandLine(new TaskCliCommand()).execute(args);
         System.exit(exitStatus);
     }
 

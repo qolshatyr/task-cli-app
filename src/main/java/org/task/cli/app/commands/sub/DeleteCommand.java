@@ -1,5 +1,6 @@
 package org.task.cli.app.commands.sub;
 
+import org.task.cli.app.commands.TaskCliCommand;
 import picocli.CommandLine;
 
 import java.util.concurrent.Callable;
@@ -7,10 +8,17 @@ import java.util.concurrent.Callable;
 
 @CommandLine.Command(name = "delete", mixinStandardHelpOptions = true, requiredOptionMarker = '*',
         description = "This is a subcommand for deleting tasks.", header = "To delete task.")
-public class deleteCommand implements Callable<Integer> {
+public class DeleteCommand implements Callable<Integer> {
+    @CommandLine.ParentCommand
+    private TaskCliCommand parent;
+
+    @CommandLine.Parameters(index = "0", description = "id")
+    private int id;
+
     @Override
     public Integer call() throws Exception {
-        System.out.println("[task-cli] Deleting task.");
+        parent.getTaskService().delete(id);
+
         return 0;
     }
 }

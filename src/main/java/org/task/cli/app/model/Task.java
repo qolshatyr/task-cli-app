@@ -20,6 +20,13 @@ public class Task {
         this.updatedAt = updatedAt;
     }
 
+    public String toString() {
+        return String.format(
+                "ID: %d\nDescription: %s\nStatus: %s\nCreated: %s\nUpdated: %s\n",
+                id, description, status, createdAt, updatedAt
+        );
+    }
+
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
 
